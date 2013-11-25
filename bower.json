@@ -1,0 +1,19 @@
+{
+  "name": "ng-timepicker-for-bs3",
+  "version": "0.0.0",
+  "authors": [
+    "SparrowJang <sparrow.jang@gmail.com>"
+  ],
+  "dependencies":{
+    "angular": "~1.2.2",
+    "bootstrap":"~3.0.2"
+  },
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

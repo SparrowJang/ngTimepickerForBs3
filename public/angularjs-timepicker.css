@@ -1,0 +1,32 @@
+
+.ng-bs3-time-picker {
+    width:150px;
+    display:table;
+}   
+.ng-bs3-time-picker .colon{
+    width:1px;
+}   
+    
+.ng-bs3-time-picker i{
+    color:black;
+}   
+.ng-bs3-time-picker .colon,
+.ng-bs3-time-picker .picker-block{
+    
+    display:table-cell; vertical-align:middle;
+}   
+    
+.ng-bs3-time-picker .picker-block {
+    width:48%;
+}   
+.ng-bs3-time-picker input{
+    margin:10px 0px;
+    width:80%;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    -o-border-radius:4px;
+    -ms-border-radius:4px;
+    border-radius:4px;
+}   
+
+
