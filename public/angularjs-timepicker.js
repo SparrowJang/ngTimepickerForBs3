@@ -53,7 +53,7 @@
 
         };
 
-        var destroyListener = scope.$on( "validate.timepicker", validate );
+        var destroyListener = scope.$on( "validate.timepicker." + limit.name, validate );
 
         scope.$on( "$destroy", destroyListener );
       }
@@ -90,7 +90,7 @@
          
           var hours = increasesOrDecreases( 0, 23, type, scope.value, "hours" );
 
-          scope.$broadcast( 'validate.timepicker', hours );
+          scope.$broadcast( 'validate.timepicker.hours', hours );
 
         };
 
@@ -100,7 +100,7 @@
          
           var mins = increasesOrDecreases( 0, 59, type, scope.value, "mins" );
 
-          scope.$broadcast( 'validate.timepicker', mins );
+          scope.$broadcast( 'validate.timepicker.mins', mins );
 
         };
 
@@ -128,7 +128,7 @@
                   '<a href="#" ng-click="increasesOrDecreasesHour( $event, \'+\' )" class="btn-block">',
                       '<i class="glyphicon glyphicon-chevron-up"></i>',
                   '</a>',
-                  '<input maxlength="2" type="text" ng-model="value.hours" class="text-center" min-and-max-for-timepicker=\'{"min":0,"max":23}\' />',
+                  '<input maxlength="2" type="text" ng-model="value.hours" class="text-center" min-and-max-for-timepicker=\'{"min":0,"max":23,"name":"hours"}\' />',
                   '<a href="#" ng-click="increasesOrDecreasesHour( $event, \'-\' )" class="btn-block">',
                       '<i class="glyphicon glyphicon-chevron-down"></i>',
                   '</a>',
@@ -138,7 +138,7 @@
                   '<a href="#" ng-click="increasesOrDecreasesMin( $event, \'+\' )" class="btn-block">',
                       '<i class="glyphicon glyphicon-chevron-up"></i>',
                   '</a>',
-                  '<input maxlength="2" type="text" class="text-center" ng-model="value.mins" min-and-max-for-timepicker=\'{"min":0,"max":59}\' />',
+                  '<input maxlength="2" type="text" class="text-center" ng-model="value.mins" min-and-max-for-timepicker=\'{"min":0,"max":59,"name":"mins"}\' />',
                   '<a href="#" ng-click="increasesOrDecreasesMin( $event, \'-\' )" class="btn-block">',
                       '<i class="glyphicon glyphicon-chevron-down"></i>',
                   '</a>',
