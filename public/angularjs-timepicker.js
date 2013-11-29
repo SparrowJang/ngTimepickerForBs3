@@ -40,9 +40,9 @@
 
         });
 
-        var validate = function(){
+        var validate = function( event, currentValue ){
 
-          if ( onMinAndMax( limit, scope.value ) ) {
+          if ( onMinAndMax( limit, currentValue ) ) {
 
             ctrl.$setValidity('integer', true);
 
@@ -68,6 +68,8 @@
       if ( type == "+" ) value[attrName] < max ? value[attrName]++: value[attrName] = min;
 
       else value[attrName] > min ? value[attrName]--: value[attrName] = max;
+
+      return value[attrName];
     };
 
     return {
@@ -86,9 +88,9 @@
 
           event.preventDefault();
          
-          increasesOrDecreases( 0, 23, type, scope.value, "hours" );
+          var hours = increasesOrDecreases( 0, 23, type, scope.value, "hours" );
 
-          scope.$broadcast('validate.timepicker');
+          scope.$broadcast( 'validate.timepicker', hours );
 
         };
 
@@ -96,9 +98,9 @@
 
           event.preventDefault();
          
-          increasesOrDecreases( 0, 59, type, scope.value, "mins" );
+          var mins = increasesOrDecreases( 0, 59, type, scope.value, "mins" );
 
-          scope.$broadcast('validate.timepicker');
+          scope.$broadcast( 'validate.timepicker', mins );
 
         };
 
