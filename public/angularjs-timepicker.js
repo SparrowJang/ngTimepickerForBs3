@@ -2,6 +2,38 @@
 (function( angular ){
 
   var app = angular.module( "ngTimepickerForBs3" ,[] );
+
+  app.directive( "minAndMaxForTimepicker", function(){
+
+    return {
+
+      require: 'ngModel',
+
+      link:function( scope, elem, attrs, ctrl ){
+
+
+        var limit = angular.fromJson( attrs.minAndMaxForTimepicker );
+
+        ctrl.$parsers.unshift(function( viewValue ){
+
+          if ( limit.min <= viewValue && limit.max >= viewValue ) {
+
+            ctrl.$setValidity('integer', true);
+
+            return parseInt( viewValue );
+
+          } else {
+
+            ctrl.$setValidity('integer', false);
+
+            return undefined;
+          }
+
+        });
+      }
+    };
+
+  });
   
   app.directive( "ngTimepickerForBs3", function(){
 
@@ -64,7 +96,7 @@
                   '<a href="#" ng-click="increasesOrDecreasesHour( $event, \'+\' )" class="btn-block">',
                       '<i class="glyphicon glyphicon-chevron-up"></i>',
                   '</a>',
-                  '<input type="text" ng-model="value.hours" class="text-center" />',
+                  '<input maxlength="2" type="text" ng-model="value.hours" class="text-center" min-and-max-for-timepicker=\'{"min":0,"max":23}\' />',
                   '<a href="#" ng-click="increasesOrDecreasesHour( $event, \'-\' )" class="btn-block">',
                       '<i class="glyphicon glyphicon-chevron-down"></i>',
                   '</a>',
@@ -74,7 +106,7 @@
                   '<a href="#" ng-click="increasesOrDecreasesMin( $event, \'+\' )" class="btn-block">',
                       '<i class="glyphicon glyphicon-chevron-up"></i>',
                   '</a>',
-                  '<input type="text" class="text-center" ng-model="value.mins" />',
+                  '<input maxlength="2" type="text" class="text-center" ng-model="value.mins" min-and-max-for-timepicker=\'{"min":0,"max":59}\' />',
                   '<a href="#" ng-click="increasesOrDecreasesMin( $event, \'-\' )" class="btn-block">',
                       '<i class="glyphicon glyphicon-chevron-down"></i>',
                   '</a>',
