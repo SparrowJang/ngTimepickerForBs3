@@ -14,6 +14,10 @@
 
       require: 'ngModel',
 
+      scope:{
+        value:"=ngModel"
+      },
+
       link:function( scope, elem, attrs, ctrl ){
 
 
@@ -38,7 +42,7 @@
 
         var validate = function(){
 
-          if ( onMinAndMax( limit, elem.val() ) ) {
+          if ( onMinAndMax( limit, scope.value ) ) {
 
             ctrl.$setValidity('integer', true);
 
