@@ -5,6 +5,11 @@
 
   app.directive( "minAndMaxForTimepicker", function(){
 
+    var onMinAndMax = function( limit, viewValue ){
+
+      return ( limit.min <= viewValue && limit.max >= viewValue ) ? true:false;
+    };
+
     return {
 
       require: 'ngModel',
@@ -16,7 +21,7 @@
 
         ctrl.$parsers.unshift(function( viewValue ){
 
-          if ( limit.min <= viewValue && limit.max >= viewValue ) {
+          if ( onMinAndMax( limit, viewValue ) ) {
 
             ctrl.$setValidity('integer', true);
 
@@ -30,6 +35,23 @@
           }
 
         });
+
+        var validate = function(){
+
+          if ( onMinAndMax( limit, elem.val() ) ) {
+
+            ctrl.$setValidity('integer', true);
+
+          } else {
+
+            ctrl.$setValidity('integer', false);
+          }
+
+        };
+
+        var destroyListener = scope.$on( "validate.timepicker", validate );
+
+        scope.$on( "$destroy", destroyListener );
       }
     };
 
@@ -62,6 +84,8 @@
          
           increasesOrDecreases( 0, 23, type, scope.value, "hours" );
 
+          scope.$broadcast('validate.timepicker');
+
         };
 
         scope.increasesOrDecreasesMin = function( event, type ){
@@ -69,6 +93,8 @@
           event.preventDefault();
          
           increasesOrDecreases( 0, 59, type, scope.value, "mins" );
+
+          scope.$broadcast('validate.timepicker');
 
         };
 
