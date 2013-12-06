@@ -8,7 +8,7 @@ An [Angularjs](http://angularjs.org/) module that is timepicker for bootstrap3.
 * bootstrap3
 * angularjs
 
-#Install
+##Install
 
 ```
 bower install ngTimepickerForBs3
