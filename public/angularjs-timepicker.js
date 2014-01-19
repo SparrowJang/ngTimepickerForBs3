@@ -109,9 +109,9 @@
 
           if ( !scope.value ) scope.value = {};
 
-		  if ( scope.value.hours ) scope.value.hours = 0;
+		  if ( !scope.value.hours ) scope.value.hours = 0;
 
-          if ( scope.value.mins ) scope.value.mins = 0;
+          if ( !scope.value.mins ) scope.value.mins = 0;
 
           destroyListener();
 
