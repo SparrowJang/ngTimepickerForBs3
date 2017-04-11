@@ -3,40 +3,40 @@ ngTimepickerForBs3
 
 An [Angularjs](http://angularjs.org/) module that is timepicker for bootstrap3.
 
-##Dependency
+## Dependency
 
 * bootstrap3
 * angularjs
 
-##Install
+## Install
 
 ```
 bower install ngTimepickerForBs3
 ```
 
-##Usage
+## Usage
 
-###Include some scripts and styles
+### Include some scripts and styles
 
 ```
 <link rel="stylesheet" href="angularjs-timepicker.css" />
 <script type="text/javascript" src="angularjs-timepicker.js"></script>
 ```
 
-###Set a model value
+### Set a model value
 ```
 <div ng-timepicker-for-bs3 ng-model="test" ng-init="test={hours:23,mins:59}"></div>
 {{test}}
 ```
 
-###Require ngTimepickerForBs3 and inject the services
+### Require ngTimepickerForBs3 and inject the services
 ```
 angular.module( "app", [
     "ngTimepickerForBs3"
 ]);
 ```
 
-##Demo
+## Demo
 
 Clone this project.
  
